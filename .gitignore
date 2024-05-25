@@ -2,5 +2,5 @@
 *
 
 # Qtile
-!qtile/config.py
-!qtile/startup.sh
+!.config/qtile/config.py
+!.config/qtile/startup.sh
