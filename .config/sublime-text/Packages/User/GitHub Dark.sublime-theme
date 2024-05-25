@@ -1,0 +1,45 @@
+// Documentation at https://www.sublimetext.com/docs/themes.html
+{
+	"variables":
+	{
+		"fontSizeSm": 10,
+		"sidebarBackground": "#080a0e",
+		"treeActiveSelectionBackground": "transparent",
+		"tabInactiveBackground": "#080a0e",
+		"titleBarForeground": "#7d8590",
+		"sidebarLabelForeground": "#7d8590",
+		"tabActiveForeground": "#e6edf3",
+		"sidebarLabelSelectedForeground": "#e6edf3",
+		"sidebarLabelHoverForeground": "#fff",
+		"sidebarFolderExpandedForeground": "#7d8590",
+	},
+	"rules":
+	[
+		{
+            "class": "sidebar_tree",
+            "row_padding": [
+                14,
+                5
+            ],
+            "indent": 10,
+            "indent_offset": 0,
+            "indent_top_level": false,
+        },
+        {
+            "class": "icon_folder",
+            "layer0.texture": "GitHub Theme/textures/navigation/chevron-right.png",
+        },
+        {
+            "class": "icon_folder",
+            "parents": [
+                {
+                    "class": "tree_row",
+                    "attributes": [
+                        "expanded"
+                    ]
+                }
+            ],
+            "layer0.texture": "GitHub Theme/textures/navigation/chevron-down.png",
+        },
+	]
+}

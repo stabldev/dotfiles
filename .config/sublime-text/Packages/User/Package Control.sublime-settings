@@ -1,0 +1,21 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Dockerfile Syntax Highlighting",
+		"DotENV",
+		"GitHub Theme",
+		"LSP",
+		"LSP-dockerfile",
+		"LSP-file-watcher-chokidar",
+		"LSP-pyright",
+		"LSP-svelte",
+		"LSP-typescript",
+		"Package Control",
+		"Svelte",
+		"TOML",
+	],
+}
