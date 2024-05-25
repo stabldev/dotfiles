@@ -1,6 +1,13 @@
 # Ignore every file by default
 *
 
+# Do not ignore .gitignore file itself
+!.gitignore
+
+# Do not ignore the .config directory and its contents
+!.config/
+!.config/**
+
 # Qtile
 !.config/qtile/config.py
 !.config/qtile/startup.sh
