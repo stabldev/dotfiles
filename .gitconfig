@@ -1,0 +1,9 @@
+[push]
+	default = current
+[alias]
+	cm = commit -m
+	co = checkout
+	st = status -s
+	br = branch
+[core]
+	editor = vim
