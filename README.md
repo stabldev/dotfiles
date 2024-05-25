@@ -5,6 +5,7 @@
 [JetBrains Mono](https://www.jetbrains.com/lp/mono/): Font\
 [Alacritty](https://alacritty.org/): Terminal emulator\
 [Picom](https://github.com/yshui/picom): Compositor for X11\
+[Nitrogen](https://wiki.archlinux.org/title/nitrogen): Background browser/setter\
 [QTile](https://qtile.org/): Window manager\
 [Rofi](https://github.com/davatorium/rofi): Window switcher (dmenu)\
 [DoomEmacs](https://github.com/doomemacs/doomemacs): Emacs framework
