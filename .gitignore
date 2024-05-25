@@ -1,6 +1,0 @@
-# Ignore every file by default
-*
-
-# Qtile
-!qtile/config.py
-!qtile/startup.sh
