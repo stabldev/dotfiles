@@ -1,0 +1,15 @@
+configuration{
+    modi: "drun";
+    font: "Iosevka 11";
+    icon-theme: "Oranchelo";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "Apps";
+    sidebar-mode: true;
+}
+
+@theme "/usr/share/rofi/themes/solarized.rasi"
