@@ -163,7 +163,7 @@ catppuccin = {
 layout_theme = {
     "border_width": 2,
     "margin": 10,
-    "border_focus": catppuccin["overlay2"],
+    "border_focus": catppuccin["crust"],
     "border_normal": catppuccin["crust"],
 }
 
@@ -184,8 +184,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="JetBrainsMonoNerdFont",
-    fontsize=12,
+    font="Iosevka",
+    fontsize=13,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -198,8 +198,8 @@ screens = [
                     highlight_method="block",
                     rounded=False,
                     inactive=catppuccin["text"],
-                    background=catppuccin["mauve"],
-                    this_current_screen_border=catppuccin["surface0"],
+                    background=catppuccin["crust"],
+                    this_current_screen_border=catppuccin["surface1"],
                     hide_unused=True,
                 ),
                 # widget.AGroupBox(),
@@ -226,27 +226,23 @@ screens = [
                 ),
                 widget.Spacer(),
                 widget.Memory(
-                    background=catppuccin["flamingo"],
-                    foreground=catppuccin["crust"],
-                    padding=7,
+                    foreground=catppuccin["flamingo"],
+                    # padding=7,
                 ),
                 widget.Spacer(length=7),
                 widget.Wlan(
-                    background=catppuccin["sky"],
-                    foreground=catppuccin["crust"],
-                    padding=10,
+                    foreground=catppuccin["sky"],
+                    # padding=10,
                 ),
                 widget.Spacer(length=7),
                 widget.Volume(
-                    background=catppuccin["sapphire"],
-                    foreground=catppuccin["crust"],
-                    padding=10,
+                    foreground=catppuccin["sapphire"],
+                    # padding=10,
                 ),
                 widget.Spacer(length=7),
                 widget.Battery(
                     format="{char} {percent:2.0%}",
-                    background=catppuccin["mauve"],
-                    foreground=catppuccin["crust"],
+                    foreground=catppuccin["sapphire"],
                     padding=10,
                 ),
                 # widget.QuickExit(),
@@ -279,6 +275,9 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_width=0,
+    border_focus=catppuccin["crust"],
+    border_normal=catppuccin["crust"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -288,6 +287,9 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        # dev windows
+        Match(wm_class="Flet"),
+        Match(wm_class="core-seeder"),
     ]
 )
 auto_fullscreen = True
@@ -296,7 +298,7 @@ reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
-auto_minimize = True
+auto_minimize = False
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
