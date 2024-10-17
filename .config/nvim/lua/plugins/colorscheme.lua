@@ -17,6 +17,12 @@ return {
           LspReferenceText = { bg = colors.surface2 },
           LspReferenceWrite = { bg = colors.surface2 },
           LspReferenceRead = { bg = colors.surface2 },
+
+          NormalFloat = { bg = colors.base },
+          Pmenu = { bg = colors.base, fg = colors.text },
+          PmenuSel = { bg = colors.surface2, fg = colors.text, style = { "bold" } },
+          PmenuSbar = { bg = colors.base },
+          PmenuThumb = { bg = colors.surface2 },
         }
       end,
     })
