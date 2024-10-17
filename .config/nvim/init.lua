@@ -3,4 +3,4 @@ require("config.lazy")
 vim.cmd.colorscheme("catppuccin")
 -- require("mini.completion").setup()
 
-vim.opt.cursorlineopt = "number"
+-- vim.opt.cursorlineopt = "number"
