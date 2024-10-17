@@ -9,7 +9,6 @@ return {
   { "rafamadriz/friendly-snippets", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "folke/persistence.nvim", enabled = false },
-  { "saghen/blink.cmp", enabled = false },
   -- { "nvim-tree/nvim-web-devicons", enabled = false },
   -- Completeion
   -- { "hrsh7th/nvim-cmp", enabled = false },
