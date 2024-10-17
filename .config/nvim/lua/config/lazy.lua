@@ -51,3 +51,12 @@ require("lazy").setup({
     },
   },
 })
+
+require("cmp").setup({
+  view = {
+    docs = { auto_open = false },
+  },
+  performance = {
+    max_view_entries = 10,
+  },
+})
