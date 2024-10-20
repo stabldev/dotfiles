@@ -14,5 +14,13 @@ return {
         -- never_show = { ".git" },
       },
     },
+    window = {
+      width = 30,
+    },
+    buffers = {
+      follow_current_file = {
+        enabled = false,
+      },
+    },
   },
 }
