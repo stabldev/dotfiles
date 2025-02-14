@@ -1,0 +1,25 @@
+[global]
+origin = bottom-right
+offset = (20, 20)
+corner_radius = 10
+font = JetBrains Mono Nerd Font 8
+frame_width = 2
+icon_corner_radius = 5
+notification_limit = 1
+
+frame_color = "#89b4fa"
+separator_color= frame
+highlight = "#89b4fa"
+
+[urgency_low]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[urgency_normal]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[urgency_critical]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#fab387"
