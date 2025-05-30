@@ -1,6 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
+-- set colorscheme
 vim.cmd.colorscheme("catppuccin")
--- require("mini.completion").setup()
-
--- vim.opt.cursorlineopt = "number"
+-- disable all animations
+vim.g.snacks_animate = false
