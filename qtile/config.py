@@ -6,6 +6,8 @@
 # Copyright (c) 2013 horsik
 # Copyright (c) 2013 Tao Sauvage
 #
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
@@ -22,21 +24,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
+import subprocess
 from libqtile import bar, layout, qtile, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
-from libqtile.widget import backlight
-
-from os.path import expanduser
-from subprocess import Popen
+from colors import CATPPUCCIN
 
 @hook.subscribe.startup_once
-def startup():
-    Popen(expanduser("~/.config/qtile/startup.sh"))
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "alacritty"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -55,11 +56,11 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow(), desc="Grow window"),
-    Key([mod, "control"], "l", lazy.layout.grow(), desc="Grow window"),
-    Key([mod, "control"], "j", lazy.layout.grow(), desc="Grow window"),
-    Key([mod, "control"], "k", lazy.layout.grow(), desc="Grow window"),
-    Key([mod], "n", lazy.layout.reset(), desc="Reset all window sizes"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -77,19 +78,21 @@ keys = [
     Key(
         [mod],
         "f",
+        lazy.window.toggle_fullscreen(),
+        desc="Toggle fullscreen on the focused window",
     ),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    # Function keys
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2dB+")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2dB-")),
-    Key([mod], "d", lazy.spawn("rofi -show drun")),
-    Key([mod], "p", lazy.spawn("flameshot gui")),
-    # Key([], "Print", lazy.spawn("maim -u ~/Pictures/screenshot/screen_$(date +%Y-%m-%d-%T).png")),
+    Key([mod], "d", lazy.spawn("bash -c '~/.config/rofi/launchers/type-1/launcher.sh'"), desc="Launch Rofi app launcher"),
+    # volume controls with amixer
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+"), desc="Increase volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-"), desc="Decrease volume"),
+    Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle"), desc="Toggle mute"),
+    # brightness controls with brightnessctl
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%"), desc="Increase brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-"), desc="Decrease brightness"),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -105,76 +108,47 @@ for vt in range(1, 8):
         )
     )
 
+
 groups = [Group(i) for i in "123456789"]
 
 for i in groups:
     keys.extend(
         [
-            # mod1 + group number = switch to group
+            # mod + group number = switch to group
             Key(
                 [mod],
                 i.name,
                 lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
+                desc=f"Switch to group {i.name}",
             ),
-            # mod1 + shift + group number = switch to & move focused window to group
+            # mod + shift + group number = switch to & move focused window to group
             Key(
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
+                desc=f"Switch to & move focused window to group {i.name}",
             ),
             # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + group number = move focused window to group
+            # # mod + shift + group number = move focused window to group
             # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
 
-catppuccin = {
-    "rosewater": "#f5e0dc",
-    "flamingo": "#f2cdcd",
-    "pink": "#f5c2e7",
-    "mauve": "#cba6f7",
-    "red": "#f38ba8",
-    "maroon": "#eba0ac",
-    "peach": "#fab387",
-    "yellow": "#f9e2af",
-    "green": "#a6e3a1",
-    "teal": "#94e2d5",
-    "sky": "#89dceb",
-    "sapphire": "#74c7ec",
-    "blue": "#89b4fa",
-    "lavender": "#b4befe",
-    "text": "#cdd6f4",
-    "subtext1": "#bac2de",
-    "subtext0": "#a6adc8",
-    "overlay2": "#9399b2",
-    "overlay1": "#7f849c",
-    "overlay0": "#6c7086",
-    "surface2": "#585b70",
-    "surface1": "#45475a",
-    "surface0": "#313244",
-    "base": "#1e1e2e",
-    "mantle": "#181825",
-    "crust": "#11111b",
-}
-
-layout_theme = {
-    "border_width": 2,
-    "margin": 10,
-    "border_focus": catppuccin["crust"],
-    "border_normal": catppuccin["crust"],
-}
-
 layouts = [
+    layout.MonadTall(
+        border_focus=CATPPUCCIN['mauve'],
+        border_normal=CATPPUCCIN["crust"],
+        margin=10,
+        border_width=2,
+    ),
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2),
-    # layout.Max(),
+    layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(**layout_theme),
+    # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -184,78 +158,61 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="Iosevka",
-    fontsize=13,
+    font="JetBrainsMono Nerd Font Bold",
+    fontsize=12,
     padding=3,
+    foreground=CATPPUCCIN["text"]
 )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
                 widget.GroupBox(
-                    highlight_method="block",
+                    active=CATPPUCCIN["blue"],
+                    inactive=CATPPUCCIN["overlay1"],
+                    highlight_method='block',
+                    this_current_screen_border=CATPPUCCIN["mauve"],
+                    other_current_screen_border=CATPPUCCIN["surface1"],
+                    block_highlight_text_color=CATPPUCCIN["base"],
+                    # background=CATPPUCCIN["mantle"],
                     rounded=False,
-                    inactive=catppuccin["text"],
-                    background=catppuccin["crust"],
-                    this_current_screen_border=catppuccin["surface1"],
+                    # padding=5,
+                    disable_drag=True,
                     hide_unused=True,
                 ),
-                # widget.AGroupBox(),
                 widget.Prompt(),
-                widget.WindowName(
-                    foreground=catppuccin["text"],
-                    padding=10,
-                ),
-                widget.Spacer(),
-                # widget.Chord(
-                #     chords_colors={
-                #         "launch": ("#ff0000", "#ffffff"),
-                #     },
-                #     name_transform=lambda name: name.upper(),
-                # ),
-                # widget.TextBox("default config", name="default"),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.WindowName(),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
-                widget.Clock(
-                    format="%Y-%m-%d %a %I:%M %p",
-                    foreground=catppuccin["text"],
-                ),
-                widget.Spacer(),
-                widget.Memory(
-                    foreground=catppuccin["flamingo"],
-                    # padding=7,
-                ),
-                widget.Spacer(length=7),
+                widget.TextBox("󰖩", fontsize=16, foreground=CATPPUCCIN["sky"], padding=10),
                 widget.Wlan(
-                    foreground=catppuccin["sky"],
-                    # padding=10,
+                    interface="wlan0",
+                    format="{essid} ({percent:2.0%})",
+                    disconnected_message="Disconnected",
+                    update_interval=5,
+                    foreground=CATPPUCCIN["green"],
                 ),
-                widget.Spacer(length=7),
-                widget.Volume(
-                    foreground=catppuccin["sapphire"],
-                    # padding=10,
+                widget.TextBox("󰂯", fontsize=16, foreground=CATPPUCCIN["blue"]),
+                widget.Bluetooth(
+                    update_interval=5,
+                    foreground=CATPPUCCIN["blue"],
                 ),
-                widget.Spacer(length=7),
-                widget.Battery(
-                    format="{char} {percent:2.0%}",
-                    foreground=catppuccin["sapphire"],
-                    padding=10,
-                ),
+                widget.TextBox("", fontsize=16, padding=10),
+                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 # widget.QuickExit(),
             ],
-            24,
-            background=catppuccin["crust"],
+            25,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background=CATPPUCCIN["crust"],
+            # margin=[0, 10, 0, 10],
         ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
         # x11_drag_polling_rate = 60,
     ),
@@ -275,9 +232,6 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_width=0,
-    border_focus=catppuccin["crust"],
-    border_normal=catppuccin["crust"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -287,9 +241,6 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-        # dev windows
-        Match(wm_class="Flet"),
-        Match(wm_class="core-seeder"),
     ]
 )
 auto_fullscreen = True
@@ -298,10 +249,14 @@ reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
-auto_minimize = False
+auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
+
+# xcursor theme (string or None) and size (integer) for Wayland backend
+wl_xcursor_theme = None
+wl_xcursor_size = 24
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
