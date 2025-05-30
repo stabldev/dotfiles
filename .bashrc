@@ -39,3 +39,14 @@ export PATH=$BUN_INSTALL/bin:$PATH
 # export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init --path)"
 # eval "$(pyenv init -)"
+
+# pnpm
+export PNPM_HOME="/home/moonlitgrace/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# alacritty
+# alias alacritty='env WAYLAND_DISPLAY= alacritty'
