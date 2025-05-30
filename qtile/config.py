@@ -86,10 +86,10 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "d", lazy.spawn("bash -c '~/.config/rofi/launchers/type-1/launcher.sh'"), desc="Launch Rofi app launcher"),
-    # volume controls with amixer
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+"), desc="Increase volume"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-"), desc="Decrease volume"),
-    Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle"), desc="Toggle mute"),
+    # volume controls with pactl
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%"), desc="Increase volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"), desc="Decrease volume"),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle"), desc="Toggle mute"),
     # brightness controls with brightnessctl
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%"), desc="Increase brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-"), desc="Decrease brightness"),
@@ -190,7 +190,7 @@ screens = [
                 widget.Systray(),
                 widget.TextBox("󰖩", fontsize=16, foreground=CATPPUCCIN["sky"], padding=10),
                 widget.Wlan(
-                    interface="wlan0",
+                    interface="wlp2s0",
                     format="{essid} ({percent:2.0%})",
                     disconnected_message="Disconnected",
                     update_interval=5,
