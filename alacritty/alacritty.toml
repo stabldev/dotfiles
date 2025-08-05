@@ -1,16 +1,13 @@
-
 [font]
 size = 9.5
 
 [font.normal]
-family = "JetBrains Mono Nerd Font"
-
-[window]
-opacity = 0.9
-
-[window.padding]
-x = 10
-y = 10
+family = "JetBrainsMono Nerd Font"
 
 [general]
-import = ["/home/moonlitgrace/.config/alacritty/catppuccin-mocha.toml"]
+import = [
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
