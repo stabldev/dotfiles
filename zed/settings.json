@@ -8,21 +8,21 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "project_panel": {
-    "dock": "left"
+    "dock": "right"
   },
-  "features": {
-    "edit_prediction_provider": "none"
-  },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
+  "ui_font_size": 12,
+  "ui_font_family": "JetBrainsMonoNL Nerd Font",
+  "buffer_font_size": 12,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "vim_mode": true,
-  "ui_font_size": 13,
-  "buffer_font_size": 13,
   "theme": {
     "mode": "system",
     "light": "Catppuccin Mocha",
     "dark": "One Dark"
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["basedpyright", "!pyright"]
+    }
   }
 }
