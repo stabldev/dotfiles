@@ -1,6 +1,6 @@
 [global]
 origin = bottom-right
-offset = (20, 20)
+offset = (10, 35)
 corner_radius = 0
 font = JetBrains Mono Nerd Font Bold 8
 frame_width = 2
