@@ -5,3 +5,6 @@
 	co = checkout
 	st = status -s
 	br = branch
+[user]
+	name = stabldev
+	email = 114811070+stabldev@users.noreply.github.com
