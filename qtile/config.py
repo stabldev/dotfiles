@@ -137,7 +137,7 @@ for i in groups:
 
 layouts = [
     layout.MonadTall(
-        border_focus=CATPPUCCIN['mauve'],
+        border_focus=CATPPUCCIN["crust"],
         border_normal=CATPPUCCIN["crust"],
         margin=10,
         border_width=2,
@@ -158,9 +158,9 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="JetBrainsMono Nerd Font Bold",
+    font="JetBrainsMono Nerd Font SemiBold",
     fontsize=12,
-    padding=3,
+    padding=2,
     foreground=CATPPUCCIN["text"]
 )
 
@@ -188,20 +188,20 @@ screens = [
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
-                widget.TextBox("󰖩", fontsize=16, foreground=CATPPUCCIN["sky"], padding=10),
-                widget.Wlan(
-                    interface="wlp2s0",
-                    format="{essid} ({percent:2.0%})",
-                    disconnected_message="Disconnected",
-                    update_interval=5,
-                    foreground=CATPPUCCIN["green"],
-                ),
-                widget.TextBox("󰂯", fontsize=16, foreground=CATPPUCCIN["blue"]),
-                widget.Bluetooth(
-                    update_interval=5,
-                    foreground=CATPPUCCIN["blue"],
-                ),
-                widget.TextBox("", fontsize=16, padding=10),
+                # widget.TextBox("󰖩", fontsize=16, foreground=CATPPUCCIN["sky"], padding=10),
+                # widget.Wlan(
+                #     interface="wlp2s0",
+                #     format="{essid} ({percent:2.0%})",
+                #     disconnected_message="Disconnected",
+                #     update_interval=5,
+                #     foreground=CATPPUCCIN["green"],
+                # ),
+                # widget.TextBox("󰂯", fontsize=16, foreground=CATPPUCCIN["blue"]),
+                # widget.Bluetooth(
+                #     update_interval=5,
+                #     foreground=CATPPUCCIN["blue"],
+                # ),
+                # widget.TextBox("", fontsize=16, padding=10),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 # widget.QuickExit(),
             ],
