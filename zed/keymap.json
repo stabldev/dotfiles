@@ -13,9 +13,9 @@
     }
   },
   {
-    "context": "Workspace",
+    "context": "Editor && vim_mode == insert",
     "bindings": {
-      "ctrl+j": "workspace::ToggleBottomDock"
+      "j k": "vim::NormalBefore"
     }
   }
 ]
