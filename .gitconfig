@@ -1,5 +1,3 @@
-[push]
-	default = current
 [alias]
 	cm = commit -m
 	co = checkout
