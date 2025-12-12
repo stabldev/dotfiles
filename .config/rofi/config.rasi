@@ -1,4 +1,4 @@
-@theme "catppuccin-default"
+@theme "catppuccin-spotlight"
 
 configuration {
     modi: "drun,run";
