@@ -1,0 +1,61 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/music"],
+    "modules-right": ["network", "custom/bluetooth", "backlight", "pulseaudio", "clock"],
+    "hyprland/workspaces": {
+         "disable-scroll": true,
+         "sort-by-name": true,
+         "format": " {icon} ",
+         "format-icons": {
+             "default": "",
+         },
+     },
+    "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata --format='{{ title }}'",
+        "on-click": "playerctl play-pause",
+        "max-length": 50
+    },
+    "clock": {
+        "timezone": "Asia/Kolkata",
+        "format-alt": " {:%d/%m/%Y}",
+        "format": " {:%H:%M}",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", " "]
+        },
+        "tooltip": false
+    },
+    "backlight": {
+      "device": "intel_backlight",
+      "format": "{icon} {percent}%",
+      "format-icons": ["󰃞", "󰃟", "󰃠"],
+      "on-scroll-up": "brightnessctl set +5%",
+      "on-scroll-down": "brightnessctl set 5%-",
+      "tooltip": false
+    },
+    "network": {
+      "format-wifi": "  {essid}",
+      "format-disconnected": "󰤮",
+      "tooltip": false,
+      "interval": 5,
+      "max-length": 10
+    },
+    "custom/bluetooth": {
+      "format": "{}",
+      "interval": 5,
+      "exec": "bluetoothctl info | grep 'Connected: yes' >/dev/null && echo '󰂱 BT' || echo '󰂯 BT'",
+      "tooltip": false,
+      "max-length": 10
+    }
+}

@@ -1,0 +1,88 @@
+@import "mocha.css";
+
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 11px;
+  font-weight: bold;
+  /* min-height: 0; */
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+}
+
+#workspaces {
+  border-radius: 1rem;
+  margin-top: 5px;
+  background-color: @surface0;
+  margin-left: 0.8rem;
+}
+
+#workspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0 0.25rem;
+}
+
+#workspaces button.active {
+  color: @sky;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+#custom-music,
+#clock,
+#pulseaudio,
+#backlight,
+#network,
+#custom-bluetooth {
+  background-color: @surface0;
+  padding: 0.25rem 1rem;
+  margin-top: 5px;
+}
+
+#clock {
+  color: @blue;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 0.8rem;
+  padding-left: 0.5rem;
+}
+
+#backlight {
+  color: @maroon;
+  border-radius: 1rem 0px 0px 1rem;
+  /* margin-left: 1rem; */
+  padding-right: 0.5rem;
+}
+
+#pulseaudio {
+  color: @maroon;
+  /* border-radius: 1rem 0px 0px 1rem; */
+  /* margin-lef : 1rem; */
+  /* padding-right: 0.5rem; */
+  padding: 0 0.5rem;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: 1rem;
+}
+
+#network {
+  color: @maroon;
+  border-radius: 1rem 0px 0px 1rem;
+  /* margin-left: 1rem; */
+  padding-right: 0.5rem;
+}
+
+#custom-bluetooth {
+  color: @blue;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 0.8rem;
+  padding-left: 0.5rem;
+}
