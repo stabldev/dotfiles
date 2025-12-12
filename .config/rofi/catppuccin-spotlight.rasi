@@ -72,7 +72,7 @@ inputbar {
 
 icon-search {
   expand: false;
-  filename: "search-symbolic";
+  filename: "~/.config/rofi/icons/search-filled.svg";
   size: 14px;
 }
 
