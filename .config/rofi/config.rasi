@@ -1,0 +1,16 @@
+@theme "catppuccin-default"
+
+configuration {
+    modi: "drun,run";
+    font: "JetBrainsMono Nerd Font 11";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: "Apps";
+    display-run: "Run";
+    location: 0;
+    width: 300;
+    lines: 10;
+    padding: 15;
+    fixed-num-lines: true;
+    border-radius: 12;
+}
