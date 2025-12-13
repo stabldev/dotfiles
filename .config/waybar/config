@@ -24,7 +24,7 @@
     "clock": {
         "timezone": "Asia/Kolkata",
         "format-alt": " {:%d/%m/%Y}",
-        "format": " {:%H:%M}",
+        "format": " {:%I:%M %p}",
         "tooltip": false
     },
     "pulseaudio": {
@@ -54,7 +54,7 @@
     "custom/bluetooth": {
       "format": "{}",
       "interval": 5,
-      "exec": "bluetoothctl info | grep 'Connected: yes' >/dev/null && echo '󰂱 BT' || echo '󰂯 BT'",
+      "exec": "INFO=$(bluetoothctl info); echo \"$INFO\" | grep -q 'Connected: yes' && echo \"󰂱 $(echo \"$INFO\" | awk -F': ' '/Name/ {print $2}')\" || echo '󰂯 BT'",
       "tooltip": false,
       "max-length": 10
     }
