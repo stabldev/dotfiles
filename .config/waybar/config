@@ -3,7 +3,7 @@
     "position": "top",
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["custom/music"],
-    "modules-right": ["network", "custom/bluetooth", "backlight", "pulseaudio", "clock"],
+    "modules-right": ["network", "custom/bluetooth", "cpu", "memory", "backlight", "pulseaudio", "clock"],
     "hyprland/workspaces": {
          "disable-scroll": true,
          "sort-by-name": true,
@@ -57,5 +57,15 @@
       "exec": "INFO=$(bluetoothctl info); echo \"$INFO\" | grep -q 'Connected: yes' && echo \"󰂱 $(echo \"$INFO\" | awk -F': ' '/Name/ {print $2}')\" || echo '󰂯 BT'",
       "tooltip": false,
       "max-length": 10
+    },
+    "cpu": {
+      "interval": 5,
+      "format": " {usage}%",
+      "tooltip": false
+    },
+    "memory": {
+      "interval": 5,
+      "format": " {used:0.1f}G",
+      "tooltip": false
     }
 }
