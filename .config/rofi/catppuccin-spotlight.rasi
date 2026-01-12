@@ -47,26 +47,25 @@
 window {
   location: center;
   anchor: center;
-  width: 520px;
+  width: 550px;
   background-color: @mantle;
   border: 2px;
   border-color: @blue;
-  border-radius: 12px;
-  padding: 8px;
+  border-radius: 18px;
+  padding: 10px;
 }
 
 /* ---------- MAIN LAYOUT ---------- */
 mainbox {
   orientation: horizontal;
-  spacing: 8px;
+  spacing: 10px;
   children: [ imagebox, contentbox ];
 }
 
 /* ---------- LEFT IMAGE ---------- */
 imagebox {
   background-color: @base;
-  background-image: url("~/Pictures/rofi-image.png", height);
-  width:            180px;
+  background-image: url("~/Pictures/rofi-image7.png", width);
   border-radius:    10px;
 }
 
@@ -112,7 +111,7 @@ listview {
 element {
   padding: 6px 10px;
   spacing: 8px;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 element normal.normal {
