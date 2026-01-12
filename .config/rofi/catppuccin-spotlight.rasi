@@ -43,31 +43,48 @@
   spacing: 0;
 }
 
-/* --- GENERAL INTERACTION --- */
-element-icon, element-text, scrollbar {
-  cursor: pointer;
-}
-
-/* --- WINDOW STYLE --- */
+/* ---------- WINDOW ---------- */
 window {
   location: center;
   anchor: center;
-  width: 300px;
+  width: 520px;
   background-color: @mantle;
   border: 2px;
   border-color: @blue;
-  border-radius: 10px;
-  padding: 5px;
+  border-radius: 12px;
+  padding: 8px;
 }
 
-/* --- SEARCH BAR --- */
+/* ---------- MAIN LAYOUT ---------- */
+mainbox {
+  orientation: horizontal;
+  spacing: 8px;
+  children: [ imagebox, contentbox ];
+}
+
+/* ---------- LEFT IMAGE ---------- */
+imagebox {
+  background-color: @base;
+  background-image: url("~/Pictures/rofi-image.png", height);
+  width:            180px;
+  border-radius:    10px;
+}
+
+/* ---------- RIGHT CONTENT ---------- */
+contentbox {
+  expand: true;
+  orientation: vertical;
+  spacing: 6px;
+  children: [ inputbar, listview ];
+}
+
+/* ---------- SEARCH BAR ---------- */
 inputbar {
   spacing: 8px;
-  padding: 4px 8px;
-  children: [ icon-search, entry ];
-
+  padding: 6px 10px;
   background-color: @base;
-  border-radius: 6px;
+  border-radius: 8px;
+  children: [ icon-search, entry ];
 }
 
 icon-search {
@@ -82,7 +99,7 @@ entry {
   placeholder-color: @subtext0;
 }
 
-/* --- LIST ITEMS --- */
+/* ---------- LIST ---------- */
 listview {
   padding: 4px 0px;
   lines: 10;
@@ -91,13 +108,13 @@ listview {
   dynamic: false;
 }
 
+/* ---------- ELEMENTS ---------- */
 element {
-  padding: 4px 8px;
+  padding: 6px 10px;
   spacing: 8px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
-/* normal */
 element normal.normal {
   text-color: @text;
   background-color: @mantle;
@@ -111,10 +128,9 @@ element normal.active {
   text-color: @accent;
 }
 
-/* selected */
 element selected {
-  text-color: @crust;
   background-color: @accent;
+  text-color: @crust;
 }
 
 element selected.urgent {
@@ -126,7 +142,6 @@ element-text selected.normal {
   text-color: @crust;
 }
 
-/* icons */
 element-icon {
   size: 0.9em;
   text-color: inherit;
